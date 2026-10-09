@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f4f5ec">
+    <title>TouchGrass AI - Your Outdoor Buddy</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Open-weight AI through Transformers.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@xenova/transformers@2.17.2"></script>
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <div class="page-shell">
+
+        <nav class="nav">
+            <a class="brand" href="#">
+                <span class="brand-icon">✳</span>
+                touchgrass<span class="brand-ai">.ai</span>
+            </a>
+            <span class="nav-note">
+                <span class="status-dot"></span>
+                Your next adventure starts here
+            </span>
+        </nav>
+
+        <main>
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="hero-copy">
+                    <p class="eyebrow">A LITTLE LESS SCREEN. A LITTLE MORE GREEN.</p>
+
+                    <h1>Make room for<br><span>the outside.</span></h1>
+
+                    <p class="hero-description">
+                        Tell your AI outdoor buddy how you're feeling.
+                        Get a simple, doable idea to reconnect with the real world.
+                    </p>
+
+                    <a class="primary-button" href="#planner">
+                        Find my outside moment <span>↗</span>
+                    </a>
+
+                    <div class="hero-proof">
+                        <span>✳</span>
+                        Open-weight AI · Personal by design · Nature first
+                    </div>
+                </div>
+
+                <div class="hero-art">
+                    <div class="sun"></div>
+                    <div class="cloud cloud-one"></div>
+                    <div class="cloud cloud-two"></div>
+                    <div class="mountain mountain-back"></div>
+                    <div class="mountain mountain-front"></div>
+                    <div class="hill hill-back"></div>
+                    <div class="hill hill-front"></div>
+                    <div class="trail"></div>
+                    <div class="flower flower-one">✿</div>
+                    <div class="flower flower-two">✿</div>
+
+                    <div class="art-label">
+                        <span>✦</span>
+                        <div>
+                            <strong>Nature is calling</strong>
+                            <small>Pick up, even for 10 minutes.</small>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Outdoor Planner -->
+            <section class="section-card planner" id="planner">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">YOUR PERSONAL OUTDOOR RESET</p>
+                        <h2>What kind of day are you having?</h2>
+                    </div>
+                    <span class="step-label">01 / CHECK IN</span>
+                </div>
+
+                <p class="muted">
+                    Choose a mood and how much time you have.
+                    Your buddy will suggest a tiny outdoor adventure.
+                </p>
+
+                <div class="mood-grid">
+                    <button class="mood selected" data-mood="stressed" aria-pressed="true">
+                        <span>🌧️</span>
+                        <strong>Stressed</strong>
+                        <small>Need to unwind</small>
+                    </button>
+
+                    <button class="mood" data-mood="low-energy" aria-pressed="false">
+                        <span>🌱</span>
+                        <strong>Low energy</strong>
+                        <small>Keep it gentle</small>
+                    </button>
+
+                    <button class="mood" data-mood="curious" aria-pressed="false">
+                        <span>🔎</span>
+                        <strong>Curious</strong>
+                        <small>Want to explore</small>
+                    </button>
+
+                    <button class="mood" data-mood="social" aria-pressed="false">
+                        <span>🌼</span>
+                        <strong>Social</strong>
+                        <small>Bring someone along</small>
+                    </button>
+                </div>
+
+                <div class="planner-controls">
+                    <label for="time-select">I have</label>
+
+                    <select id="time-select">
+                        <option value="10">10 minutes</option>
+                        <option value="20" selected>20 minutes</option>
+                        <option value="30">30 minutes</option>
+                        <option value="60">1 hour</option>
+                    </select>
+
+                    <label for="place-select">I'm near</label>
+
+                    <select id="place-select">
+                        <option value="anywhere">Anywhere outdoors</option>
+                        <option value="park">A park or garden</option>
+                        <option value="home">Home or a balcony</option>
+                        <option value="trail">A trail or open space</option>
+                    </select>
+
+                    <button id="generate-btn" class="primary-button">
+                        Make my plan <span>✦</span>
+                    </button>
+                </div>
+
+                <div class="ai-status" id="ai-status" role="status">
+                    <span class="status-dot"></span>
+                    <span>AI planner is ready.</span>
+                </div>
+
+                <article class="recommendation" id="recommendation" aria-live="polite">
+                    <div class="recommendation-icon">🍃</div>
+
+                    <div class="recommendation-copy">
+                        <span class="result-kicker">YOUR OUTSIDE MOMENT</span>
+                        <h3>Your tiny reset is waiting.</h3>
+                        <p>
+                            Choose your mood and click Make my plan
+                            to get an outdoor idea.
+                        </p>
+                        <div class="chips">
+                            <span>Easy to start</span>
+                            <span>No special gear</span>
+                        </div>
+                    </div>
+
+                    <button id="complete-btn" class="complete-button" disabled>
+                        Mark done ✓
+                    </button>
+                </article>
+            </section>
+
+            <!-- Daily Challenge and Nature Journal -->
+            <section class="lower-grid">
+                <article class="section-card challenge-card">
+                    <div class="card-top">
+                        <span class="card-icon">☀️</span>
+                        <span class="step-label">02 / DAILY CHALLENGE</span>
+                    </div>
+
+                    <p class="eyebrow">TODAY'S LITTLE MISSION</p>
+
+                    <h2 id="challenge-title">
+                        Notice 3 things<br>you usually miss.
+                    </h2>
+
+                    <p class="muted">
+                        A tiny leaf, a faraway bird, the shape of a cloud.
+                        Let curiosity lead for five minutes.
+                    </p>
+
+                    <button id="challenge-btn" class="text-button">
+                        Give me another challenge ↗
+                    </button>
+
+                    <div class="challenge-progress">
+                        <div id="progress-fill"></div>
+                    </div>
+
+                    <small id="progress-label">
+                        0 outdoor moments completed
+                    </small>
+                </article>
+
+                <article class="section-card journal-card">
+                    <div class="card-top">
+                        <span class="card-icon">📓</span>
+                        <span class="step-label">03 / NATURE JOURNAL</span>
+                    </div>
+
+                    <p class="eyebrow">SAVE A REAL-WORLD MEMORY</p>
+
+                    <h2>What did you notice?</h2>
+
+                    <p class="muted">
+                        Write down one thing from your time outside.
+                        Your notes stay in this browser.
+                    </p>
+
+                    <textarea id="journal-entry" rows="3" placeholder="I noticed the breeze felt like..."></textarea>
+
+                    <div class="journal-footer">
+                        <span id="saved-label">Saved on this device</span>
+                        <button id="save-journal" class="secondary-button">
+                            Save note
+                        </button>
+                    </div>
+
+                    <ul id="journal-list" class="journal-list"></ul>
+                </article>
+            </section>
+
+            <!-- Open Source Section -->
+            <section class="open-section">
+                <div class="open-mark">✳</div>
+
+                <div>
+                    <p class="eyebrow">BUILT IN THE OPEN</p>
+
+                    <h2>AI that brings you back to the real world.</h2>
+
+                    <p>
+                        TouchGrass AI uses an open-weight language model
+                        through Transformers.js to help create activity ideas.
+                        The model runs in the browser after its files are
+                        downloaded. A fallback planner keeps the website
+                        useful if the AI model cannot load.
+                    </p>
+                </div>
+
+                <div class="open-points">
+                    <span>↗ No app account</span>
+                    <span>⌂ Notes stay in your browser</span>
+                    <span>✳ Model can be swapped</span>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <a class="brand" href="#">
+                ✳ touchgrass<span class="brand-ai">.ai</span>
+            </a>
+
+            <span>Made for the moments beyond your screen.</span>
+
+            <button id="reset-btn" class="quiet-button">
+                Reset progress
+            </button>
+        </footer>
+    </div>
+</body>
+
+</html>
